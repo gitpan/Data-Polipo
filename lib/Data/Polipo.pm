@@ -27,7 +27,7 @@ our @EXPORT = qw(
 	
 );
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 # Preloaded methods go here.
@@ -39,6 +39,7 @@ sub new {
     my $h = {};
 
     my $fh = new IO::File $file, "r" or die "$file: $!";
+    $fh->binmode;
     local $/ = "\r\n";
     my $res = <$fh>;
     chomp $res;
